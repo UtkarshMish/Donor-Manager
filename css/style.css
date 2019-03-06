@@ -1,0 +1,96 @@
+nav{
+    opacity: 0.9;
+    z-index: 999;
+}
+.active{
+    color: #b60d5c;
+}
+.dimmer{
+    filter: brightness(50%);
+}
+.card-up{
+    position: relative;
+    z-index: 888;
+    margin-top: -10%;
+}
+.motto{
+    position: absolute ;
+    left: 0;
+    top: 20%;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    z-index: 999;
+ 
+}
+.topleft {
+    position: absolute;
+    top: 8px;
+    left: 16px;
+    font-size: 18px;
+}
+.topright {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-size: 18px;
+}
+.cus-pad{
+    padding-top: 1%;
+    margin-top: 0%;
+    padding-bottom: 1%;
+}
+[type="radio"]:not(:checked), [type="radio"]:checked {
+    position: relative;
+    opacity: 1 !important; 
+   
+}
+.custom-pad{
+    padding-top: 1%;
+    padding-bottom: 12%;
+    margin-top: 0%;
+}
+.card-content{position: relative;
+
+    background-color: inherit;
+    
+    border-top: 1px solid rgba(160,160,160,0.2);
+    
+    padding: 16px 24px;
+}
+                /* sidenav bar settings */
+                .sidenav {
+                    height: 100%;
+                    width: 200px;
+                    position: fixed;
+                    z-index: 1;
+                    top: 0;
+                     left: 0;
+                    
+                    background-color: #000;
+                    overflow-x: hidden;
+                    padding-top: 5%;
+                }
+                
+                .sidenav a {
+                    padding: 6px 6px 6px 32px;
+                    text-decoration: none;
+                    font-size: 18px;
+                    color: #818181;
+                    display: block;
+                    
+                }
+                
+                .sidenav a:hover {
+                    color: #da1d65;
+                }
+                
+                .main {
+                    margin-left: 200px; /* Same as the width of the sidenav */
+                }
+                
+                @media screen and (max-height: 450px) {
+                  .sidenav {padding-top: 15px;}
+                  .sidenav a {font-size: 18px;}
+                }
+                
