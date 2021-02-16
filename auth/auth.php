@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 require_once("../db-connection.php");
 $userlevel=$_GET['user'];
@@ -17,6 +17,7 @@ $result=mysqli_query($conn,$sql);
 $count=mysqli_num_rows($result);
 $row=mysqli_fetch_assoc($result);
 $id=$row['donor_id'];
+
 // If result matched $myusername and $mypassword, table row must be 1 row
 if($count==1){
 
@@ -31,7 +32,6 @@ if($count==1){
 	header("location:../dashboard.php?id={$row['donor_id']}");  
 }
 else {
-	
 header('Location: ../login.php?auth=1');
 }
 ?>
