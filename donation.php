@@ -2,6 +2,36 @@
 if(!isset($_SESSION['id'])){
   header("location:login.php");
 }
+
+  require_once("db-connection.php");
+    $sql = "SELECT `event_id` , `event_name` FROM `events` WHERE start_date BETWEEN '2017-11-18' AND '2018-11-18'";
+
+    $result = mysqli_query($conn,$sql);
+
+    
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+//       foreach ($_POST as $key => $value)
+// {
+//   echo $key.$value;
+// }
+// die();
+      $event_id=$_POST['event_id'];
+      $date = date('Y-m-d');
+      $donor_id=$_SESSION['id'];
+      $donation_amt=$_POST['donation_amt'];
+      $sql = "INSERT INTO `donations`(`event_id`, `date`, `donor_id`, `donation_amt`)
+       VALUES
+        ('$event_id','$date',$donor_id,$donation_amt)";
+    
+      if (mysqli_query($conn,$sql)) {
+        header("location:../dashboard.php");
+       
+        
+      } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+      }
+    }
+    
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -29,37 +59,7 @@ if(!isset($_SESSION['id'])){
       }
     </style>
   </head>
-  <?php
-  require_once("db-connection.php");
-    $sql = "SELECT `event_id` , `event_name` FROM `events` WHERE start_date BETWEEN '2017-11-18' AND '2018-11-18'";
-
-    $result = mysqli_query($conn,$sql);
-
-    ?>
-    <?php
-    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//       foreach ($_POST as $key => $value)
-// {
-//   echo $key.$value;
-// }
-// die();
-      $event_id=$_POST['event_id'];
-      $date = date('Y-m-d');
-      $donor_id=$_SESSION['id'];
-      $donation_amt=$_POST['donation_amt'];
-      $sql = "INSERT INTO `donations`(`event_id`, `date`, `donor_id`, `donation_amt`)
-       VALUES
-        ('$event_id','$date',$donor_id,$donation_amt)";
-    
-      if (mysqli_query($conn,$sql)) {
-        header("location:../dashboard.php");
-       
-        
-      } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-      }
-    }
-    ?>
+  
   <body>
     <header>
       <nav class="black">
