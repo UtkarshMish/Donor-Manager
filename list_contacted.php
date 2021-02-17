@@ -34,14 +34,14 @@ if(($_SESSION['id'] !=1)){
     </style>
   </head>
   <?php
-    
+
     require_once("db-connection.php");
     $id=$_SESSION['id'];
     $sql = "SELECT * FROM `reach_us` WHERE 1";
     $result = mysqli_query($conn,$sql);
-    
-    
- 
+
+
+
   ?>
      <?php
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -50,8 +50,8 @@ if(($_SESSION['id'] !=1)){
             $sql = "DELETE FROM `reach_us` WHERE contact_id ='$oid'";
             if (mysqli_query($conn,$sql)) {
                 header("location:/list_contacted.php");
-               
-                
+
+
               } else {
                 echo "Error: " . $sql . "<br>" . $conn->error;
               }
@@ -85,7 +85,7 @@ if(($_SESSION['id'] !=1)){
         </div>
       </nav>
       <div class="sidenav">
-            
+
             <a href="<?php if($id=='1'){echo "admin/admin_dashboard.php";}
             else echo "/dashboard.php"; ?>">Dashboard</a>
             <a href="/edit_user.php">Edit Profile</a>
@@ -121,12 +121,12 @@ if(($_SESSION['id'] !=1)){
                               <th class="black-text">Delete the Organization</th>
                           </tr>
                         </thead>
-                
+
                         <tbody>
                       <?php
-                      if ($result->num_rows > 0) {
+                      if ($result && $result->num_rows > 0) {
                         while($contacted = $result->fetch_assoc()) {
-                        
+
                           echo "<tr>";
                           echo "<td>" . $contacted['contact_id'] . "</td>";
                           echo "<td>" . $contacted['name'] . "</td>";
@@ -136,7 +136,7 @@ if(($_SESSION['id'] !=1)){
                           ?>
                           <td><form action= "<?php $_SERVER['PHP_SELF'] ?>" method="post">
                           <button type="submit" class="btn waves-effect waves-light pink white-text darken-1" name="delete_item" value="<?php echo $contacted['contact_id'] ?> ">Delete</button>
-                          
+
                         </form>
                     </td>
                         <?php  echo "</tr>";
@@ -145,7 +145,7 @@ if(($_SESSION['id'] !=1)){
                       echo "</table>"
                       ?>
                 </div>
-               
+
               </div>
         </div>
       </section>

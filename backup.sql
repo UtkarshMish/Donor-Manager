@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.0.1
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Feb 16, 2021 at 04:35 PM
--- Server version: 10.3.13-MariaDB-log
--- PHP Version: 7.3.9
+-- Host: 127.0.0.1
+-- Generation Time: Feb 17, 2021 at 04:36 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -121,6 +120,20 @@ INSERT INTO `organization` (`org_id`, `organization_name`) VALUES
 (4, 'gdfgdfg'),
 (5, 'testssss');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `reach_us`
+--
+
+CREATE TABLE `reach_us` (
+  `name` varchar(50) NOT NULL,
+  `email` varchar(50) NOT NULL,
+  `phone_no` int(15) NOT NULL,
+  `description` varchar(230) NOT NULL,
+  `contact_id` int(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Indexes for dumped tables
 --
@@ -151,6 +164,12 @@ ALTER TABLE `organization`
   ADD PRIMARY KEY (`org_id`);
 
 --
+-- Indexes for table `reach_us`
+--
+ALTER TABLE `reach_us`
+  ADD PRIMARY KEY (`contact_id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -177,6 +196,12 @@ ALTER TABLE `events`
 --
 ALTER TABLE `organization`
   MODIFY `org_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `reach_us`
+--
+ALTER TABLE `reach_us`
+  MODIFY `contact_id` int(250) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
